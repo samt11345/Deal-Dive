@@ -4,7 +4,6 @@ const Subject = require('./subject');
 const UsersPost = require('./UsersPost.js');
 
 Post.belongsToMany(Subject, {
-    // Define the third table needed to store the foreign keys
     foreignKey: 'subject_id'
 });
 
