@@ -2,6 +2,8 @@ const { Model, DataTypes } = require('sequelize');
 const bcrypt = require('bcrypt');
 const sequelize = require('../config/connection');
 
+class Post extends Model {}
+
 Post.init(
   {
     id: {
@@ -20,7 +22,7 @@ Post.init(
     },
     date: {
       type: DataTypes.DATE,
-      allowNull: false,
+      default: Date.now,
     },
   },
   {

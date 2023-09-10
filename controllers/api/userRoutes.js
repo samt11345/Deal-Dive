@@ -1,6 +1,4 @@
 const router = require('express').Router();
-const path = require('path');
-const api = require('./routes/index.js');
 
 // Sample data (for demonstration purposes)
 const items = [
@@ -9,17 +7,15 @@ const items = [
   { id: 3, name: 'Item 3' },
 ];
 
-router.use(express.json());
-
 // GET all items
-router.get('/api/items', (req, res) => {
+router.get('/', (req, res) => {
   res.json(items);
 });
 
 // GET a specific item by ID
-router.get('/api/items/:id', (req, res) => {
+router.get('/:id', (req, res) => {
   const id = parseInt(req.params.id);
-  const item = items.find((item) => item.id === id);
+  const item = items.find((it) => it.id === id);
   if (!item) {
     res.status(404).json({ message: 'Item not found' });
   } else {
@@ -28,14 +24,14 @@ router.get('/api/items/:id', (req, res) => {
 });
 
 // POST a new item
-router.post('/api/items', (req, res) => {
+router.post('/', (req, res) => {
   const newItem = req.body;
   items.push(newItem);
   res.status(201).json(newItem);
 });
 
 // PUT (update) an existing item by ID
-router.put('/api/items/:id', (req, res) => {
+router.put('/:id', (req, res) => {
   const id = parseInt(req.params.id);
   const updatedItem = req.body;
   const index = items.findIndex((item) => item.id === id);
@@ -48,7 +44,7 @@ router.put('/api/items/:id', (req, res) => {
 });
 
 // DELETE an item by ID
-router.delete('/api/items/:id', (req, res) => {
+router.delete('/:id', (req, res) => {
   const id = parseInt(req.params.id);
   const index = items.findIndex((item) => item.id === id);
   if (index === -1) {
