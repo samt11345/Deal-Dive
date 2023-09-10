@@ -9,7 +9,6 @@ Post.belongsToMany(Subject, {
 });
 
 Subject.hasMany(Post, {
-    // Define the third table needed to store the foreign keys
     foreignKey: 'subject_id'
 });
 
