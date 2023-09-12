@@ -32,7 +32,7 @@ Post.init(
       allowNull: false,
     },
     contact: {
-      tye: DataTypes.STRING,
+      type: DataTypes.STRING,
       allowNull: false,
     },
     image: {
