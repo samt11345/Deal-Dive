@@ -1,0 +1,12 @@
+
+{{#if loggedIn}}
+
+{{#each galleries as |gallery|}}
+{{> gallery-details}}
+{{/each}}
+
+{{else}}
+
+<h3>You must have an account to see posts.</h3> 
+
+{{/if}}
