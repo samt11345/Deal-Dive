@@ -8,7 +8,7 @@ const routes = require('./controllers');
 const helpers = require('./utils/helpers');
 
 const app = express();
-const PORT = process.env.PORT || 3001;
+const PORT = process.env.PORT || 3033;
 
 // Create an instance of Handlebars with custom helpers
 const hbs = exphbs.create({ helpers });
