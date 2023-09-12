@@ -12,17 +12,41 @@ Post.init(
       primaryKey: true,
       autoIncrement: true,
     },
-    name: {
-      type: DataTypes.STRING,
+    date: {
+      type: DataTypes.DATE,
       allowNull: false,
+    },
+    price: {
+      type: DataTypes.DECIMAL,
+      allowNull: true,
+      validate: {
+        isDecimal: true,
+      },
     },
     title: {
       type: DataTypes.STRING,
       allowNull: false,
     },
-    date: {
-      type: DataTypes.DATE,
-      default: Date.now,
+    location: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
+    contact: {
+      tye: DataTypes.STRING,
+      allowNull: false,
+    },
+    image: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
+    subject_id: {
+      type: DataTypes.INTEGER,
+      references: {
+        model: 'subject',
+        key: 'id',
+        type: DataTypes.DATE,
+        default: Date.now,
+      },
     },
   },
   {
