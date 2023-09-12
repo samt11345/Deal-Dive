@@ -3,7 +3,7 @@ const Post = require('./Post');
 const Subject = require('./Subject');
 const UsersPost = require('./UsersPost.js');
 
-Post.belongsToMany(Subject, {
+Post.belongsTo(Subject, {
   foreignKey: 'subject_id',
 });
 

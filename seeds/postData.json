@@ -1,0 +1,34 @@
+[
+    {
+        "date": "1/2/23",
+        "price": 10.35,
+        "title": "Flyers t-shirt",
+        "location": "Philadelphia, PA",
+        "contact": "sedia_massaquoi",
+        "subject_id": 1
+    },
+    {
+        "date": "2/3/23",
+        "price": 40.25,
+        "title": "Yoga Leggings",
+        "location": "New York, NY",
+        "contact": "sedia_mass",
+        "subject_id": 2
+    },
+    {
+        "date": "3/4/23",
+        "price": 16.38,
+        "title": "Jordan Air 1",
+        "location": "Atlanta, GA",
+        "contact": "sediamassa",
+        "subject_id": 3
+    },
+    {
+        "date": "4/5/23",
+        "price": 12.82,
+        "title": "Cargo Pants",
+        "location": "Charlotte, NC",
+        "contact": "sedia_m",
+        "subject_id": 4
+    }
+]
