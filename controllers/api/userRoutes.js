@@ -55,7 +55,7 @@ router.post('/signup', async (req, res) => {
 
   req.session.save(() => {
     req.session.user_id = signupData.id;
-    req.session.logged_in = true;
+    // req.session.logged_in = true;
 
     res.json({
       user: signupData,
@@ -65,6 +65,7 @@ router.post('/signup', async (req, res) => {
 });
 
 //------------------------------------------------------------------------------------------
+/*
 // Sample data (for demonstration purposes)
 const items = [
   { id: 1, name: 'Item 1' },
@@ -119,5 +120,7 @@ router.delete('/:id', (req, res) => {
     res.json({ message: 'Item deleted' });
   }
 });
+
+*/
 
 module.exports = router;
