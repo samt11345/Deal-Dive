@@ -2,7 +2,7 @@ const { Model, DataTypes } = require('sequelize');
 const bcrypt = require('bcrypt');
 const sequelize = require('../config/connection');
 
-class Post extends Model { }
+class Post extends Model {}
 
 Post.init(
   {
@@ -32,7 +32,7 @@ Post.init(
       allowNull: false,
     },
     contact: {
-      tye: DataTypes.STRING,
+      type: DataTypes.STRING,
       allowNull: false,
     },
     image: {
@@ -44,7 +44,9 @@ Post.init(
       references: {
         model: 'subject',
         key: 'id',
-      }
+        type: DataTypes.DATE,
+        default: Date.now,
+      },
     },
   },
   {
