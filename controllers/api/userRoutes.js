@@ -1,9 +1,5 @@
 const router = require('express').Router();
-const path = require('path');
-const api = require('./routes/index.js');
 
-
-const router = require('express').Router();
 const { User } = require('../../models');
 
 router.post('/login', async (req, res) => {
@@ -32,12 +28,10 @@ router.post('/login', async (req, res) => {
 
       res.json({ user: userData, message: 'You are now logged in!' });
     });
-
   } catch (err) {
     res.status(400).json(err);
   }
 });
-
 
 router.post('/logout', (req, res) => {
   if (req.session.logged_in) {
@@ -53,7 +47,7 @@ router.post('/signup', async (req, res) => {
   const signupData = await User.create({
     email: req.body.email,
     password: req.body.password,
-    name: req.body.name
+    name: req.body.name,
   });
   if (!signupData) {
     return res.json({ message: 'this is is not a valid sign up' });
@@ -63,9 +57,12 @@ router.post('/signup', async (req, res) => {
     req.session.user_id = signupData.id;
     req.session.logged_in = true;
 
-    res.json({ user: signupData, message: 'You successfully made an account. Try logging in!' });
-  })
-})
+    res.json({
+      user: signupData,
+      message: 'You successfully made an account. Try logging in!',
+    });
+  });
+});
 
 //------------------------------------------------------------------------------------------
 // Sample data (for demonstration purposes)
@@ -75,17 +72,15 @@ const items = [
   { id: 3, name: 'Item 3' },
 ];
 
-router.use(express.json());
-
 // GET all items
-router.get('/api/items', (req, res) => {
+router.get('/', (req, res) => {
   res.json(items);
 });
 
 // GET a specific item by ID
-router.get('/api/items/:id', (req, res) => {
+router.get('/:id', (req, res) => {
   const id = parseInt(req.params.id);
-  const item = items.find((item) => item.id === id);
+  const item = items.find((it) => it.id === id);
   if (!item) {
     res.status(404).json({ message: 'Item not found' });
   } else {
@@ -94,14 +89,14 @@ router.get('/api/items/:id', (req, res) => {
 });
 
 // POST a new item
-router.post('/api/items', (req, res) => {
+router.post('/', (req, res) => {
   const newItem = req.body;
   items.push(newItem);
   res.status(201).json(newItem);
 });
 
 // PUT (update) an existing item by ID
-router.put('/api/items/:id', (req, res) => {
+router.put('/:id', (req, res) => {
   const id = parseInt(req.params.id);
   const updatedItem = req.body;
   const index = items.findIndex((item) => item.id === id);
@@ -114,7 +109,7 @@ router.put('/api/items/:id', (req, res) => {
 });
 
 // DELETE an item by ID
-router.delete('/api/items/:id', (req, res) => {
+router.delete('/:id', (req, res) => {
   const id = parseInt(req.params.id);
   const index = items.findIndex((item) => item.id === id);
   if (index === -1) {
@@ -126,4 +121,3 @@ router.delete('/api/items/:id', (req, res) => {
 });
 
 module.exports = router;
-
