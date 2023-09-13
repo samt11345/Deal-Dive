@@ -35,26 +35,26 @@ router.get('/', async (req, res) => {
 });
 
 router.get('/login', (req, res) => {
-  // if (!req.session.logged_in) {
-  //   res.redirect('/');
-  //   return;
-  // }
+  if (!req.session.logged_in) {
+    res.redirect('/');
+    return;
+  }
   res.render('login');
 });
 
 router.get('/logout', (req, res) => {
-  // if (!req.session.logged_in) {
-  //   res.redirect('/');
-  //   return;
-  // }
+  if (!req.session.logged_in) {
+    res.redirect('/');
+    return;
+  }
   res.render('logout');
 });
 
 router.get('/signup', (req, res) => {
-  // if (!req.session.logged_in) {
-  //   res.redirect('/login'); // once signed up can see dashboard
-  //   return;
-  // }
+  if (!req.session.logged_in) {
+    res.redirect('/login'); // once signed up can see dashboard
+    return;
+  }
   res.render('signup');
 });
 
