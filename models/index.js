@@ -3,7 +3,7 @@ const Post = require('./Post');
 const Subject = require('./Subject');
 const UsersPost = require('./UsersPost.js');
 
-Post.belongsToMany(Subject, {
+Post.hasOne(Subject, {
   foreignKey: 'subject_id',
 });
 
@@ -11,6 +11,19 @@ Subject.hasMany(Post, {
   foreignKey: 'subject_id',
 });
 
+Post.hasOne(User, {
+  foreignKey: 'user_id',
+});
+
+User.hasMany(Post, {
+  foreignKey: 'user_id',
+});
+
+UsersPost.belongsTo(User, {
+  foreignKey: 'user_id',
+});
+
+/*
 Post.belongsToMany(User, {
   foreignKey: 'post_id',
   through: {
@@ -18,6 +31,8 @@ Post.belongsToMany(User, {
     unique: false,
   },
 });
+*/
+/*
 User.belongsToMany(Post, {
   foreignKey: 'user_id',
   through: {
@@ -25,5 +40,5 @@ User.belongsToMany(Post, {
     unique: false,
   },
 });
-
-module.exports = { User, Post, Subject };
+*/
+module.exports = { User, Post, Subject, UsersPost };

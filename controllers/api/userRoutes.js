@@ -2,6 +2,16 @@ const router = require('express').Router();
 
 const { User } = require('../../models');
 
+router.get('/', async (req, res) => {
+  try {
+    const data = await User.findAll();
+    res.status(200).json(data);
+  } catch (err) {
+    if (err) throw err;
+    res.status(500).json(err);
+  }
+});
+
 router.post('/login', async (req, res) => {
   try {
     const userData = await User.findOne({ where: { email: req.body.email } });
@@ -55,7 +65,7 @@ router.post('/signup', async (req, res) => {
 
   req.session.save(() => {
     req.session.user_id = signupData.id;
-    req.session.logged_in = true;
+    // req.session.logged_in = true;
 
     res.json({
       user: signupData,
@@ -65,6 +75,7 @@ router.post('/signup', async (req, res) => {
 });
 
 //------------------------------------------------------------------------------------------
+/*
 // Sample data (for demonstration purposes)
 const items = [
   { id: 1, name: 'Item 1' },
@@ -119,5 +130,7 @@ router.delete('/:id', (req, res) => {
     res.json({ message: 'Item deleted' });
   }
 });
+
+*/
 
 module.exports = router;
