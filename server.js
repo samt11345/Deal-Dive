@@ -13,10 +13,6 @@ const PORT = process.env.PORT || 3033;
 // Create an instance of Handlebars with custom helpers
 const hbs = exphbs.create({ helpers });
 
-// Set up the view engine to use Handlebars
-app.engine('handlebars', hbs.engine);
-app.set('view engine', 'handlebars');
-
 const sess = {
   secret: 'Super secret secret',
   cookie: { maxAge: 1000 * 60 * 60 },
@@ -28,6 +24,11 @@ const sess = {
 };
 
 app.use(session(sess));
+
+// Set up the view engine to use Handlebars
+app.engine('handlebars', hbs.engine);
+app.set('view engine', 'handlebars');
+
 // Middleware
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));

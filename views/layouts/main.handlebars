@@ -15,7 +15,7 @@ Handlebars-LC
     <h1>Welcome to Fashionablean</h1>
   </header>
 
-      <nav>
+  <nav>
     <a href="/">Home</a>
     <a href="/sellItem">Sell an Item +</a>
   </nav>
@@ -24,12 +24,15 @@ Handlebars-LC
     <a href="/signup">Sign Up</a>
   </nav>
 
-    {{#if loggedIn}}
-    <button  href="/logout" id="logout" class="btn-no-style">Logout</button>
-    {{else}}
-    <a href="/login">Login</a>
-    {{/if}}
+  {{#if loggedIn}}
+  <button href="/logout" id="logout" class="btn-no-style">Logout</button>
+  {{else}}
+  <a href="/login">Login</a>
+  {{/if}}
   </nav>
 
+  {{{body}}}
 
-main
+</body>
+
+</html>
