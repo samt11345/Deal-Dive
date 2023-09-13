@@ -8,14 +8,10 @@ const routes = require('./controllers');
 const helpers = require('./utils/helpers');
 
 const app = express();
-const PORT = process.env.PORT || 3001;
+const PORT = process.env.PORT || 3033;
 
 // Create an instance of Handlebars with custom helpers
 const hbs = exphbs.create({ helpers });
-
-// Set up the view engine to use Handlebars
-app.engine('handlebars', hbs.engine);
-app.set('view engine', 'handlebars');
 
 const sess = {
   secret: 'Super secret secret',
@@ -28,6 +24,11 @@ const sess = {
 };
 
 app.use(session(sess));
+
+// Set up the view engine to use Handlebars
+app.engine('handlebars', hbs.engine);
+app.set('view engine', 'handlebars');
+
 // Middleware
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));

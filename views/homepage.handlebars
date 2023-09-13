@@ -1,12 +1,12 @@
 
 {{#if loggedIn}}
 
-{{#each galleries as |gallery|}}
-{{> gallery-details}}
-{{/each}}
+<p>Ready to add your post?</p>
+    <button><a href="/dashboard/{{id}}"> Click Here </a></button>
 
 {{else}}
 
-<h3>You must have an account to see posts.</h3> 
+    <p>It seems you don't have an account. Want to sign up?</p>
+    <a href="/signup"> Click Here </a> 
 
 {{/if}}
