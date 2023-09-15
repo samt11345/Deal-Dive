@@ -17,6 +17,9 @@ async function getAllPosts() {
 async function getPost(id) {
   return axios.get(`http://localhost:3033/api/posts/${id}`).then(response => response.data).catch(error => console.error(error));
 }
+async function filterPosts(id) {
+  return axios.get(`http://localhost:3033/api/posts/filter/${id}`).then(response => response.data).catch(error => console.error(error));
+}
 
 router.get('/', async (req, res) => {
   try {
@@ -36,8 +39,34 @@ router.get('/', async (req, res) => {
       logged_in: req.session.logged_in,
       siteName,
       navItems,
-      categories: subjectResults.map(item => item.subject_name),
+      categories: subjectResults.map(item => ({ id: item.id, name: item.subject_name })),
       featuredItems: await getAllPosts(),
+    });
+  } catch (err) {
+    console.log(err);
+    res.status(500).json(err);
+  }
+});
+router.get('/:id', async (req, res) => {
+  try {
+    const allSubjects = await Subject.findAll({
+      include: [
+        {
+          model: Post,
+          attributes: ['date', 'price', 'title', 'location', 'contact', 'image', 'subject_id'],
+        },
+      ],
+    });
+
+    const subjectResults = allSubjects.map((r) => r.get({ plain: true }));
+  
+    res.render('homepage', {
+      subjectResults,
+      logged_in: req.session.logged_in,
+      siteName,
+      navItems,
+      categories: subjectResults.map(item => ({ id: item.id, name: item.subject_name })),
+      featuredItems: await filterPosts(req.params.id),
     });
   } catch (err) {
     console.log(err);
@@ -126,13 +155,26 @@ router.get('/dashboard/:id', async (req, res) => {
 // GET single post
 
 router.get('/post/:id', async (req, res) => {
+  const allSubjects = await Subject.findAll({
+    include: [
+      {
+        model: Post,
+        attributes: ['date', 'price', 'title', 'location', 'contact', 'image', 'subject_id'],
+      },
+    ],
+  });
+
+  const subjectResults = allSubjects.map((r) => r.get({ plain: true }));
   try {
     const postSelection = await Post.findByPk(req.params.id);
     const post = postSelection.get({ plain: true });
     res.render('Inspect', {
       post, siteName,
       navItems,
-      product: await getPost(req.params.id),
+      product: {
+        ...post,
+        subject_id: subjectResults.find(i => i.id === post.subject_id).subject_name
+      },
     });
   } catch (err) {
     console.log(err);
@@ -150,11 +192,22 @@ router.post('/sellitem', async (req, res) => {
   }
 });
 
-router.get('/sellitem', withAuth, (req, res) => {
+router.get('/sellitem', withAuth, async(req, res) => {
   if (req.session.logged_in) {
+    const allSubjects = await Subject.findAll({
+      include: [
+        {
+          model: Post,
+          attributes: ['date', 'price', 'title', 'location', 'contact', 'image', 'subject_id'],
+        },
+      ],
+    });
+
+    const subjectResults = allSubjects.map((r) => r.get({ plain: true }));
     res.render('sellitem', {
       loggedIn: req.session.loggedIn, siteName,
       navItems,
+      categories: subjectResults.map(item => ({ id: item.id, name: item.subject_name }))
     });
   } else {
     console.log('Please login');

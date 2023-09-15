@@ -2,11 +2,13 @@
     <nav class="sidebar">
         <h2>Categories</h2>
         <ul>
+            <li><a href="/">View All</a></li>
             {{#each categories}}
-            <li><a href="#">{{this}}</a></li>
+            <li><a href="/{{this.id}}">{{this.name}}</a></li>
             {{/each}}
         </ul>
     </nav>
+
     <div class="main-content">
         <h1>Welcome to {{siteName}}</h1>
 
