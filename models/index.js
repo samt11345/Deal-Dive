@@ -5,6 +5,10 @@ const UsersPost = require('./UsersPost.js');
 
 Post.hasOne(Subject, {
   foreignKey: 'subject_id',
+  through: {
+    model: Subject,
+    unique: false,
+  },
 });
 
 Subject.hasMany(Post, {

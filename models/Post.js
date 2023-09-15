@@ -32,6 +32,10 @@ Post.init(
       type: DataTypes.STRING,
       allowNull: false,
     },
+    description: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
     contact: {
       type: DataTypes.STRING,
       allowNull: false,
@@ -39,6 +43,11 @@ Post.init(
     image: {
       type: DataTypes.STRING,
       allowNull: false,
+    },
+    similarItem: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      defaultValue: '',
     },
     subject_id: {
       type: DataTypes.INTEGER,
