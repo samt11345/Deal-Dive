@@ -47,7 +47,7 @@ router.get('/', async (req, res) => {
     res.status(500).json(err);
   }
 });
-router.get('/:id', async (req, res) => {
+router.get('/filter/:id', async (req, res) => {
   try {
     const allSubjects = await Subject.findAll({
       include: [
@@ -168,12 +168,13 @@ router.get('/post/:id', async (req, res) => {
   try {
     const postSelection = await Post.findByPk(req.params.id);
     const post = postSelection.get({ plain: true });
+    const subjectName = subjectResults.find(i => i.id === post.subject_id) ? subjectResults.find(i => i.id === post.subject_id).subjectName : "Other";
     res.render('Inspect', {
       post, siteName,
       navItems,
       product: {
         ...post,
-        subject_id: subjectResults.find(i => i.id === post.subject_id).subject_name
+        subject_id: subjectName
       },
     });
   } catch (err) {
