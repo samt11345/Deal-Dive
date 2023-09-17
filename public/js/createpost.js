@@ -9,6 +9,7 @@ const createPostFormHandler = async (event) => {
     const contact = document.querySelector("#contact").value.trim();
     const image = document.querySelector("#image").value.trim();
     const similarItem = document.querySelector("#similarItem").value.trim();
+    const subjectId = document.querySelector("#category").value.trim();
 
     if (title && description && price && location) {
       const payload = {
@@ -19,6 +20,7 @@ const createPostFormHandler = async (event) => {
         contact,
         image,
         similarItem,
+        subject_id: subjectId,
         date: new Date(),
       };
 
