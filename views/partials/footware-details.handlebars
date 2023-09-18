@@ -1,8 +1,8 @@
 <h1>footware </h1>
 
-<div>
+{{#if logged_in}}
 
-  {{#if logged_in}}
+<div>
 
   <section class="card">
     <a href="/post/{{id}}">
@@ -35,9 +35,10 @@
       </div>
     </a>
 
-    {{else}}
-    <h3>Please login</h3>
-    {{/if}}
   </section>
 
 </div>
+
+{{else}}
+<h3>Please login</h3>
+{{/if}}
