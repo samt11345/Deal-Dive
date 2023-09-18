@@ -1,7 +1,7 @@
 const { Model, DataTypes } = require('sequelize');
 const sequelize = require('../config/connection');
 
-class Post extends Model {}
+class Post extends Model { }
 
 // id, date, price, title, location, contact, image, subject_id
 
@@ -16,6 +16,7 @@ Post.init(
     date: {
       type: DataTypes.DATE,
       allowNull: false,
+      defaultValue: DataTypes.NOW,
     },
     price: {
       type: DataTypes.DECIMAL,
@@ -49,13 +50,15 @@ Post.init(
       allowNull: false,
       defaultValue: '',
     },
+    // This column will store a reference of the `id` of the `Subject` a post has
     subject_id: {
       type: DataTypes.INTEGER,
       references: {
+        // This references the `subject` model, which was set in `Subject.js` as its `modelName` property
         model: 'subject',
         key: 'id',
         type: DataTypes.DATE,
-        default: Date.now,
+        default: Date.NOW,
       },
     },
   },
