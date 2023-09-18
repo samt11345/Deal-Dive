@@ -4,6 +4,7 @@ const { Subject, Post } = require('../models');
 const withAuth = require('../utils/auth');
 
 const siteName = 'DealDive';
+// Text for nav bar will match up to links
 const navItems = [
   { text: 'Home', link: '/' },
   { text: 'Create a Listing', link: '/sellItem' },
@@ -34,6 +35,7 @@ async function filterPosts(id) {
 router.get('/', async (req, res) => {
   try {
     const allSubjects = await Subject.findAll({
+      // Transfers all Post model info to display info
       include: [
         {
           model: Post,
@@ -53,6 +55,7 @@ router.get('/', async (req, res) => {
     const subjectResults = allSubjects.map((r) => r.get({ plain: true }));
 
     res.render('homepage', {
+      // Have these variables ready for rendering homepage
       subjectResults,
       logged_in: req.session.logged_in,
       siteName,
@@ -69,6 +72,7 @@ router.get('/', async (req, res) => {
   }
 });
 router.get('/filter/:id', async (req, res) => {
+  // For indivual item listings
   try {
     const allSubjects = await Subject.findAll({
       include: [
@@ -114,6 +118,7 @@ router.get('/login', (req, res) => {
 });
 
 router.get('/logout', (req, res) => {
+  // Can't logout if you haven't logged in
   if (!req.session.logged_in) {
     res.redirect('/');
     return;
@@ -131,8 +136,8 @@ router.get('/signup', (req, res) => {
   });
 });
 
-// need new name for dashboard. Must do as well to other files vvvv
 router.get('/dashboard', withAuth, async (req, res) => {
+  // uses withAuth function from Auth to verify login
   if (req.session.logged_in) {
     try {
       const allSubjects = await Subject.findAll({
@@ -152,6 +157,7 @@ router.get('/dashboard', withAuth, async (req, res) => {
         ],
       });
 
+      // List of all subjects. Each subject needing Post data
       const subjects = allSubjects.map((r) => r.get({ plain: true }));
       const postData = await Post.findAll();
       const usersposts = postData.map((r) => r.get({ plain: true }));
@@ -204,7 +210,6 @@ router.get('/dashboard/:id', async (req, res) => {
 });
 
 // GET single post
-
 router.get('/post/:id', async (req, res) => {
   const allSubjects = await Subject.findAll({
     include: [
@@ -227,6 +232,7 @@ router.get('/post/:id', async (req, res) => {
   try {
     const postSelection = await Post.findByPk(req.params.id);
     const post = postSelection.get({ plain: true });
+    // This is section specific items, know the data by id and then bring to inspect page
     const subjectName = subjectResults.find((i) => i.id === post.subject_id)
       ? subjectResults.find((i) => i.id === post.subject_id).subjectName
       : 'Other';
@@ -247,6 +253,7 @@ router.get('/post/:id', async (req, res) => {
 
 router.post('/sellitem', async (req, res) => {
   try {
+    // Once form is filled out the item will create post on dashboard (homepage)
     await Post.create(req.body);
     res.redirect('/dashboard');
   } catch (err) {
