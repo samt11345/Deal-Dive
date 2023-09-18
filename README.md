@@ -2,9 +2,9 @@
 
 # Description
 
-This is an alternative market app where users can quickly and casually sell items on their own merits mostly focusing in fashion. Users can inspect listings and create ones themselves in different categories. 🧥 👖 🥾
+This is an alternative market app where users can quickly and casually sell items on their own merits mostly focusing in fashion. Users can inspect listings, compare to listings on Amazon and create ones themselves in different categories. 🧥 👖 🥾
 
-In addition there is a login system so that a user can create an account and then create their listings via a form in which a URL image can be used.
+In addition there is a login system so that a user can create an account and then create their listings via a form in which a URL image can be used. (suggestion Imgur)
 
 Table of Contents
 - [Description](#Decription)
