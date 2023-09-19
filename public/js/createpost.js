@@ -1,3 +1,4 @@
+const debug = require('debug')('app');
 const createPostFormHandler = async (event) => {
   try {
     event.preventDefault();
@@ -30,8 +31,8 @@ const createPostFormHandler = async (event) => {
       });
 
       if (response.ok) {
-        console.log('------------This response is okay------------', response);
-        console.log(payload);
+        debug('------------This response is okay------------', response);
+        debug(payload);
 
         localStorage.setItem('data', JSON.stringify(payload));
         document.location.replace('/');
