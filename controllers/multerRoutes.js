@@ -1,11 +1,6 @@
-const express = require("express");
-const app = express();
+const express = require('express');
 
-app.set("view engine", "ejs");
+ const app = express();
+ const debug = require('debug')('app');
 
-app.get("/upload", (req, res)=> {
-    res.render("upload");
-});
-
-app.listen(3001);
-console.log("3001 is the port");
+ app.set('view engine', 'ejs');

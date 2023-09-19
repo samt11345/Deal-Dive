@@ -1,39 +1,44 @@
-
 <h1>footware </h1>
+
+{{#if logged_in}}
 
 <div>
 
-<section class="card">
-  <a href="/post/{{id}}">
-    <header>{{title}}</header>
+  <section class="card">
+    <a href="/post/{{id}}">
+      <header>{{title}}</header>
 
-    <div class="card-body">
-      <img src="/images/{{filename}}" alt="{{description}}">
+      <div class="card-body">
+        <img src="/images/{{filename}}" alt="{{description}}">
         <p>By: {{price}}</p>
-      <p>{{date}}</p>
-    </div>
-  </a>
+        <p>{{date}}</p>
+      </div>
+    </a>
 
     <a href="/post/{{id}}">
-    <header>{{title}}</header>
+      <header>{{title}}</header>
 
-    <div class="card-body">
-      <img src="/images/{{filename}}" alt="{{description}}">
+      <div class="card-body">
+        <img src="/images/{{filename}}" alt="{{description}}">
         <p>By: {{price}}</p>
-      <p>{{date}}</p>
-    </div>
-  </a>
+        <p>{{date}}</p>
+      </div>
+    </a>
 
     <a href="/post/{{id}}">
-    <header>{{title}}</header>
+      <header>{{title}}</header>
 
-    <div class="card-body">
-      <img src="/images/{{filename}}" alt="{{description}}">
+      <div class="card-body">
+        <img src="/images/{{filename}}" alt="{{description}}">
         <p>By: {{price}}</p>
-      <p>{{date}}</p>
-    </div>
-  </a>
-  
-</section>
+        <p>{{date}}</p>
+      </div>
+    </a>
+
+  </section>
 
 </div>
+
+{{else}}
+<h3>Please login</h3>
+{{/if}}
