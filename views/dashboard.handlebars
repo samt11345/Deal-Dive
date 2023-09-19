@@ -1,20 +1,15 @@
-    <section class="card">
-
-      {{#each post.id as |post|}}
-      {{> post-details}}
-      {{/each}}
-
-    </section>
-
-    <section class="card">
-        {{#if }}
-      {{> createpost-details}}
-      {{}}
-    </section>
-
-
-    <h3> If you want to logout</h3>
-    <p> Use the logout link if you want a different account</p>
-    <a href="/logout">Got to logout</a>
-  </section>
+<section class="card">
+    {{#each posts as |post|}}
+    {{> post-details}}
+    {{/each}}
 </section>
+
+<section class="card">
+    {{#if isUserLoggedIn}}
+    {{> createpost-details}}
+    {{/if}}
+</section>
+
+<h3> If you want to logout</h3>
+<p> Use the logout link if you want a different account</p>
+<a href="/logout">Go to logout</a>

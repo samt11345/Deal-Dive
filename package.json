@@ -1,7 +1,10 @@
 {
   "name": "project-2",
   "version": "1.0.0",
-  "description": "",
+  "engines": {
+    "node": "12.11.1"
+    },
+  "description": "DealDive",
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -16,6 +19,7 @@
   "dependencies": {
     "bcrypt": "^5.0.0",
     "connect-session-sequelize": "^7.1.7",
+    "debug": "^4.3.4",
     "dotenv": "^8.2.0",
     "eslint-config-wesbos": "^3.2.3",
     "express": "^4.17.1",
@@ -23,5 +27,8 @@
     "express-session": "^1.17.3",
     "mysql2": "^2.2.5",
     "sequelize": "^6.3.5"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.1"
   }
 }

@@ -1,19 +1,22 @@
-<h2>Login</h2>
-
-<form class="form login-form">
-  <div class="form-group">
-    <label for="email-login">email:</label>
-    <input class="form-input" type="text" id="email-login" />
-  </div>
-  <div class="form-group">
-    <label for="password-login">password:</label>
-    <input class="form-input" type="password" id="password-login" />
-  </div>
-  <div class="form-group">
-    <button class="btn btn-primary" type="submit">login</button>
-  </div>
-</form>
-
-<button><a href="/">Go back</a></button>
+ <main class="container">
+            <div class="col-md-6">
+                <h1>Sign In</h1>
+                <form class="form login-form">
+                    <div class="mb-3">
+                        {{!-- For filling out email and password to be checked at front js and routes --}}
+                        <label for="email-login" class="form-label">Email address</label>
+                        <input type="email" class="form-control" id="email-login" required style="width: 1300px;">
+                    </div>
+                    <div class="mb-3">
+                        <label for="password-login" class="form-label">Password</label>
+                        <input type="password" class="form-control" id="password-login" required style="width: 1300px;">
+                    </div>
+                    <button type="submit" class="btn btn-primary mt-2">Sign In</button>
+                    <a href="/signup" class="btn btn-secondary mt-2">Create New Account</a>
+                </form>
+            </div>
+        </div>
+    </main>
+{{!-- <button><a href="/">Go back</a></button> --}}
 
 <script src="/js/login.js"></script>
