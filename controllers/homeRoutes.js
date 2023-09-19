@@ -1,5 +1,4 @@
 const router = require('express').Router();
-const axios = require('axios');
 const { Subject, Post } = require('../models');
 const withAuth = require('../utils/auth');
 const siteName = 'DealDive';
@@ -9,17 +8,6 @@ const navItems = [
   { text: 'Sign Up', link: '/signup' },
   { text: 'Sign In', link: '/login' },
 ];
-
-async function getAllPosts() {
-  return axios.get('http://localhost:3033/api/posts/').then(response => response.data).catch(error => console.error(error));
-}
-
-async function getPost(id) {
-  return axios.get(`http://localhost:3033/api/posts/${id}`).then(response => response.data).catch(error => console.error(error));
-}
-async function filterPosts(id) {
-  return axios.get(`http://localhost:3033/api/posts/filter/${id}`).then(response => response.data).catch(error => console.error(error));
-}
 
 router.get('/', async (req, res) => {
   try {
@@ -33,14 +21,16 @@ router.get('/', async (req, res) => {
     });
 
     const subjectResults = allSubjects.map((r) => r.get({ plain: true }));
-  
+    const allPosts = await Post.findAll();
+    const allPostResults = allPosts.map(r => r.dataValues);
+
     res.render('homepage', {
       subjectResults,
       logged_in: req.session.logged_in,
       siteName,
       navItems,
       categories: subjectResults.map(item => ({ id: item.id, name: item.subject_name })),
-      featuredItems: await getAllPosts(),
+      featuredItems: allPostResults
     });
   } catch (err) {
     console.log(err);
@@ -59,14 +49,16 @@ router.get('/filter/:id', async (req, res) => {
     });
 
     const subjectResults = allSubjects.map((r) => r.get({ plain: true }));
-  
+    const filteredPosts = await Post.findAll({ where: { subject_id: req.params.id } });
+    const filteredPostResults = filteredPosts.map(r => r.dataValues);
+
     res.render('homepage', {
       subjectResults,
       logged_in: req.session.logged_in,
       siteName,
       navItems,
       categories: subjectResults.map(item => ({ id: item.id, name: item.subject_name })),
-      featuredItems: await filterPosts(req.params.id),
+      featuredItems: filteredPostResults
     });
   } catch (err) {
     console.log(err);
