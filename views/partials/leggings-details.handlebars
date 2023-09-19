@@ -1,6 +1,8 @@
 
 <h1>Leggings </h1>
 
+{{#if logged_in}}
+
 <div>
 
 <section class="card">
@@ -37,3 +39,7 @@
 </section>
 
 </div>
+
+{{else}}
+<h3>Please login</h3>
+{{/if}}
