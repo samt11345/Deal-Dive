@@ -1,7 +1,10 @@
 {
   "name": "project-2",
   "version": "1.0.0",
-  "description": "",
+  "engines": {
+    "node": "12.11.1"
+    },
+  "description": "DealDive",
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
