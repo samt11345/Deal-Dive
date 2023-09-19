@@ -1,4 +1,3 @@
-const debug = require('debug')('app');
 const createPostFormHandler = async (event) => {
 
   try {

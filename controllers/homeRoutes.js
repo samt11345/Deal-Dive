@@ -168,7 +168,7 @@ router.get('/post/:id', async (req, res) => {
   try {
     const postSelection = await Post.findByPk(req.params.id);
     const post = postSelection.get({ plain: true });
-    const subjectName = subjectResults.find(i => i.id === post.subject_id) ? subjectResults.find(i => i.id === post.subject_id).subjectName : "Other";
+    const subjectName = subjectResults.find(i => i.id === post.subject_id) ? subjectResults.find(i => i.id === post.subject_id).subject_name : "Other";
     res.render('Inspect', {
       post, siteName,
       navItems,
