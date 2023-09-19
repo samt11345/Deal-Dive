@@ -1,7 +1,7 @@
 const router = require('express').Router();
+const axios = require('axios');
 const { Subject, Post } = require('../models');
 const withAuth = require('../utils/auth');
-const axios = require("axios");
 const siteName = 'DealDive';
 const navItems = [
   { text: 'Home', link: '/' },
@@ -193,7 +193,7 @@ router.post('/sellitem', async (req, res) => {
   }
 });
 
-router.get('/sellitem', withAuth, async(req, res) => {
+router.get('/sellItem', withAuth, async(req, res) => {
   if (req.session.logged_in) {
     const allSubjects = await Subject.findAll({
       include: [
@@ -205,7 +205,7 @@ router.get('/sellitem', withAuth, async(req, res) => {
     });
 
     const subjectResults = allSubjects.map((r) => r.get({ plain: true }));
-    res.render('sellitem', {
+    res.render('sellItem', {
       loggedIn: req.session.loggedIn, siteName,
       navItems,
       categories: subjectResults.map(item => ({ id: item.id, name: item.subject_name }))
