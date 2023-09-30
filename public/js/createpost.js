@@ -30,8 +30,8 @@ const createPostFormHandler = async (event) => {
       });
 
       if (response.ok) {
-        console.log('------------This response is okay------------', response);
-        console.log(payload);
+        console.log('Post created successfully!');
+        alert('Post created successfully!');
 
         localStorage.setItem('data', JSON.stringify(payload));
         document.location.replace('/');

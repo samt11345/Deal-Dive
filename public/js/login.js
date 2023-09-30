@@ -6,6 +6,7 @@ const loginFormHandler = async (event) => {
 
   if (email && password) {
     const response = await fetch('/api/users/login', {
+      // Converts the entered info to text for routes
       method: 'POST',
       body: JSON.stringify({
         email,
@@ -15,6 +16,7 @@ const loginFormHandler = async (event) => {
     });
 
     if (response.ok) {
+      // Afterwards send to home
       document.location.replace('/dashboard');
     } else {
       alert('Failed to log in');
