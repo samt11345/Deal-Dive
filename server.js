@@ -8,17 +8,26 @@ const routes = require('./controllers');
 const helpers = require('./utils/helpers');
 
 const app = express();
-const PORT = process.env.PORT || 3001;
+const PORT = process.env.PORT || 3033;
 
 // Create an instance of Handlebars with custom helpers
-const hbs = exphbs.create({ helpers });
+const hbs = exphbs.create({
+  helpers: {
+    truncate: function (str, len) {
+      if (str.length > len && str.length > 0) {
+        var new_str = str + " ";
+        new_str = str.substr(0, len);
+        new_str = str.substr(0, new_str.lastIndexOf(" "));
+        return new_str;
+      }
+      return str;
+    }
+  }
+});
 
-// Set up the view engine to use Handlebars
-app.engine('handlebars', hbs.engine);
-app.set('view engine', 'handlebars');
 
 const sess = {
-  secret: 'Super secret secret',
+  secret: process.env.SESSION_SECRET,
   cookie: { maxAge: 1000 * 60 * 60 },
   resave: false,
   saveUninitialized: true,
@@ -28,6 +37,11 @@ const sess = {
 };
 
 app.use(session(sess));
+
+// Set up the view engine to use Handlebars
+app.engine('handlebars', hbs.engine);
+app.set('view engine', 'handlebars');
+
 // Middleware
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
