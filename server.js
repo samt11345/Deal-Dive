@@ -6,23 +6,15 @@ const SequelizeStore = require('connect-session-sequelize')(session.Store);
 const sequelize = require('./config/connection');
 const routes = require('./controllers');
 const helpers = require('./utils/helpers');
+const { config } = require('dotenv');
+config()
 
 const app = express();
 const PORT = process.env.PORT || 3033;
 
 // Create an instance of Handlebars with custom helpers
 const hbs = exphbs.create({
-  helpers: {
-    truncate: function (str, len) {
-      if (str.length > len && str.length > 0) {
-        var new_str = str + " ";
-        new_str = str.substr(0, len);
-        new_str = str.substr(0, new_str.lastIndexOf(" "));
-        return new_str;
-      }
-      return str;
-    }
-  }
+  helpers:helpers
 });
 
 
