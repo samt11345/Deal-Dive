@@ -1,8 +1,6 @@
 const express = require('express');
 
-const app = express();
-const debug = require('debug')('app');
+ const app = express();
+ const debug = require('debug')('app');
 
-app.set('view engine', 'ejs');
-
-
+ app.set('view engine', 'ejs');

@@ -16,7 +16,7 @@ Table of Contents
 
 # Usage
 
-Video demo: 
+Video demo: https://drive.google.com/file/d/1jAnotGVpXPoMqxOU8duArYEab52SiWa7/view
 
 Users must first source schema, seeds, and query sql files and fill out a sign up segment then click the index.js
 
@@ -26,7 +26,7 @@ From there the users can select create a listing and fill out a form. To add an 
 
 # Credits
 
-@lcurtis0 @SediaM @samt11345 @kojootchere 
+@lcurtis0 @SediaM @samt11345 @kojootchere @Devin-Butler
 
 # License
 
