@@ -10,14 +10,11 @@
     </nav>
 
     <div class="main-content">
-        <h1>Welcome to {{siteName}}</h1>
-
-
-        <h2>Featured Items</h2>
+        <h2>Deals of the Day</h2>
         <div class="row">
             {{#each featuredItems}}
             <div class="col-sm-4" style="padding-bottom: 20px;">
-                <div class="card" style="min-height: 450px; max-height: 450px;">
+                <div class="card shadow-lg" style="min-height: 450px; max-height: 450px;">
                     <img src="{{#if this.image}} {{this.image}} {{else}} http://via.placeholder.com/150 {{/if}}"
                         class="card-img-top" alt="..." width="200px" height="250px" />
 
