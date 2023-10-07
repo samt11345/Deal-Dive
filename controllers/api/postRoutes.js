@@ -27,15 +27,19 @@ router.get('/:id', (req, res) => {
 
 // POST a new item
 router.post('/', (req, res) => {
-  const newPost = req.body;
+  const newPost = {
+      ...req.body,
+      user_id: req.session.user_id
+  };
   Post.create(newPost)
-    .then((results) => {
-      res.status(201).json(results);
-    })
-    .catch((err) => {
-      console.log(err);
-      res.json(err);
-    });
+      .then((results) => {
+          res.redirect('/dashboard');
+          // res.status(201).json(results);
+      })
+      .catch((err) => {
+          console.log(err);
+          res.json(err);
+      });
 });
 
 // PUT (update) an existing item by ID
@@ -63,14 +67,14 @@ router.delete('/:id', (req, res) => {
 });
 
 router.get('/filter/:subjectId', async (req, res) => {
-    try {
-        const subjectId = req.params.subjectId;
-        const posts = await Post.findAll({ where: { subject_id: subjectId } });
-        res.json(posts);
-    } catch (err) {
-        console.error(err);
-        res.status(500).json({ message: 'Server error' });
-    }
+  try {
+    const { subjectId } = req.params;
+    const posts = await Post.findAll({ where: { subject_id: subjectId } });
+    res.json(posts);
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ message: 'Server error' });
+  }
 });
 
 module.exports = router;

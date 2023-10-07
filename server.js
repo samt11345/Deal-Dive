@@ -11,10 +11,27 @@ const app = express();
 const PORT = process.env.PORT || 3033;
 
 // Create an instance of Handlebars with custom helpers
-const hbs = exphbs.create({ helpers });
+const hbs = exphbs.create({
+  helpers: {
+    truncate: function (str, len) {
+      if (str.length > len && str.length > 0) {
+        var new_str = str + " ";
+        new_str = str.substr(0, len);
+        new_str = str.substr(0, new_str.lastIndexOf(" "));
+        return new_str;
+      }
+      return str;
+    },
+    formatDate: function (date) {
+      const options = { year: 'numeric', month: 'long', day: 'numeric' };
+      return new Date(date).toLocaleDateString(undefined, options);
+  },
+  }
+});
+
 
 const sess = {
-  secret: 'Super secret secret',
+  secret: process.env.SESSION_SECRET,
   cookie: { maxAge: 1000 * 60 * 60 },
   resave: false,
   saveUninitialized: true,
