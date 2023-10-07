@@ -11,15 +11,6 @@ const navItems = [
   { text: 'Sign In', link: '/login' },
 ];
 
-const siteName = 'DealDive';
-// Text for nav bar will match up to links
-const navItems = [
-  { text: 'Home', link: '/' },
-  { text: 'Create a Listing', link: '/sellItem' },
-  { text: 'Sign Up', link: '/signup' },
-  { text: 'Sign In', link: '/login' },
-];
-
 async function getAllPosts() {
   return axios
     .get('http://localhost:3033/api/posts/')
@@ -99,27 +90,16 @@ router.get('/filter/:id', async (req, res) => {
     });
 
     const subjectResults = allSubjects.map((r) => r.get({ plain: true }));
-<<<<<<< HEAD
-=======
     const filteredPosts = await Post.findAll({ where: { subject_id: req.params.id } });
     const filteredPostResults = filteredPosts.map(r => r.dataValues);
->>>>>>> 79542344e930620fe74d70639ae8d454b171ea33
 
     res.render('homepage', {
       subjectResults,
       logged_in: req.session.logged_in,
       siteName,
       navItems,
-<<<<<<< HEAD
-      categories: subjectResults.map((item) => ({
-        id: item.id,
-        name: item.subject_name,
-      })),
-      featuredItems: await filterPosts(req.params.id),
-=======
       categories: subjectResults.map(item => ({ id: item.id, name: item.subject_name })),
       featuredItems: filteredPostResults
->>>>>>> 79542344e930620fe74d70639ae8d454b171ea33
     });
   } catch (err) {
     console.log(err);
@@ -154,44 +134,22 @@ router.get('/signup', (req, res) => {
 });
 
 router.get('/dashboard', withAuth, async (req, res) => {
-  // uses withAuth function from Auth to verify login
-  if (req.session.logged_in) {
-    try {
-      const allSubjects = await Subject.findAll({
-        include: [
-          {
-            model: Post,
-            attributes: [
-              'date',
-              'price',
-              'title',
-              'location',
-              'contact',
-              'image',
-              'subject_id',
-            ],
+  try {
+      const postData = await Post.findAll({
+          where: {
+              user_id: req.session.user_id,
           },
-        ],
+         
       });
 
-      // List of all subjects. Each subject needing Post data
-      const subjects = allSubjects.map((r) => r.get({ plain: true }));
-      const postData = await Post.findAll();
-      const usersposts = postData.map((r) => r.get({ plain: true }));
+      const posts = postData.map((post) => post.get({ plain: true }));
+
       res.render('dashboard', {
-        subjects,
-        usersposts,
-        loggedIn: req.session.loggedIn,
-        siteName,
-        navItems,
+          posts,
+          logged_in: true,
       });
-    } catch (err) {
-      console.log(err);
+  } catch (err) {
       res.status(500).json(err);
-    }
-  } else {
-    console.log('Please login or sign up');
-    res.redirect('/login');
   }
 });
 
@@ -260,6 +218,7 @@ router.get('/post/:id', async (req, res) => {
         ...post,
         subject_id: subjectName,
       },
+      logged_in: req.session.logged_in,
     });
   } catch (err) {
     console.log(err);
@@ -278,11 +237,7 @@ router.post('/sellitem', async (req, res) => {
   }
 });
 
-<<<<<<< HEAD
-router.get('/sellitem', withAuth, async (req, res) => {
-=======
 router.get('/sellItem', withAuth, async(req, res) => {
->>>>>>> 79542344e930620fe74d70639ae8d454b171ea33
   if (req.session.logged_in) {
     const allSubjects = await Subject.findAll({
       include: [
@@ -302,14 +257,8 @@ router.get('/sellItem', withAuth, async(req, res) => {
     });
 
     const subjectResults = allSubjects.map((r) => r.get({ plain: true }));
-<<<<<<< HEAD
-    res.render('sellitem', {
-      loggedIn: req.session.loggedIn,
-      siteName,
-=======
     res.render('sellItem', {
-      loggedIn: req.session.loggedIn, siteName,
->>>>>>> 79542344e930620fe74d70639ae8d454b171ea33
+      logged_in: req.session.logged_in,
       navItems,
       categories: subjectResults.map((item) => ({
         id: item.id,
