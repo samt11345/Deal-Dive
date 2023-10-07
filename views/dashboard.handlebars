@@ -1,7 +1,8 @@
 <section class="card">
     {{#each posts as |post|}}
-    <div v-for="info in filteredInfo" @mouseover="handleEvent" <!--:class="{ fav: info.isFav }" @click="toggleFav(info)"
+    <div v-for="info in filteredInfo" @mouseover="handleEvent" @mouseover="handleEvent"@mouseleave="handleEvent" @mousemove="handleMousemove"<!--:class="{ fav: info.isFav }" @click="toggleFav(info)"
         -->>
+        position - {{ x }} {{ y }}
         {{> post-details}}
         <p> {{ info.title }}</p>
         <p> {{ info.category }}</p>

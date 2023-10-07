@@ -8,12 +8,31 @@ const vuePage = Vue.createApp({
 
     // here can be methods
 
+    data(){
+        return{
+            showInfo: true,
+            x:0, 
+            y:0,
+        }
+    }
+
+
 methods: {
     toggleShowInfo() {
         this.showInfo = !this.showInfo
     },
     handleEvent() {
         console.log('The handle event function is working')
+        console.log(e, data)
+        // What showing the event does is brovide properties with information. This comes with x and y coordinates (offset) for the cursor over the post. Using this information we can manipulate it.
+        console.log(e, e.type)
+        if (data) {
+            console.log(data)
+        }
+    },
+    handleMousemove(e) {
+        this.x = e.offsetX
+        this.y = e.offsetY
     }
 }
 
