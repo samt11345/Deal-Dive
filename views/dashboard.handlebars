@@ -1,6 +1,11 @@
 <section class="card">
     {{#each posts as |post|}}
-    {{> post-details}}
+    <div v-for="info in filteredInfo" @mouseover="handleEvent" <!--:class="{ fav: info.isFav }" @click="toggleFav(info)"
+        -->>
+        {{> post-details}}
+        <p> {{ info.title }}</p>
+        <p> {{ info.category }}</p>
+    </div>
     {{/each}}
 </section>
 
@@ -9,6 +14,8 @@
     {{> createpost-details}}
     {{/if}}
 </section>
+
+<script src="vue.js"></script>
 
 <h3> If you want to logout</h3>
 <p> Use the logout link if you want a different account</p>
