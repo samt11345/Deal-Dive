@@ -15,8 +15,7 @@ const vuePage = Vue.createApp({
             y:0,
         }
     }
-
-
+[]
 methods: {
     toggleShowInfo() {
         this.showInfo = !this.showInfo
@@ -33,6 +32,16 @@ methods: {
     handleMousemove(e) {
         this.x = e.offsetX
         this.y = e.offsetY
+
+        const anchor = document.getElementById('anchor')
+        const rekt = anchor.getBoundingClientRect();
+        const anchorX = rekt.left + rekt.width / 2;
+        const anchorY = rekt.top + rekt.height / 2;
+
+        // rekt represents the frame of post 
+        // in combination of having rekt and coordinates this acts as a graph 
+
+
     }
 }
 
@@ -52,3 +61,22 @@ vuePage.mount('#vue')
 
 // make sure to credit : https://www.youtube.com/watch?v=CYPZBK8zUik&list=PL4cUxeGkcC9hYYGbV60Vq3IXYNfDk8At1&index=3&ab_channel=NetNinja
 
+/*
+<button v-on:click="dissapear" id="bluebaloon" :style="{ 'background-color': dissapearColor }">
+
+...
+data: {
+  return {
+    dissapearColor: 'blue'
+  }
+}
+...
+methods:{
+  dissapear () {
+    this.dissapearColor = "red";
+  }
+}
+
+*/
+
+// This is a huge step in the write diretion for knowing hwo to make a cursor effect. Credit to : https://www.youtube.com/watch?v=TGe3pS5LqEw&ab_channel=BeyondFireship
