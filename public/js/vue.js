@@ -1,5 +1,69 @@
+/*
 console.log('Vue.js is currently working');
 
+const vuePage = Vue.createApp({
+    // Adding template
+    template: '<h2>I am the template</h2>'
+
+
+// data actas as the source of values
+
+data() {
+        return {
+            showInfo: true,
+            x: 0,
+            y: 0,
+        }
+    }
+
+    // Methods holds all of the functions that will used later in tags
+methods: {
+    // Test for showing info
+    toggleShowInfo() {
+        this.showInfo = !this.showInfo
+    },
+    // For if the mouse enters a container
+    handleEvent() {
+        console.log('The handle event function is working')
+        // What showing the event does is brovide properties with information. This comes with x and y coordinates (offset) for the cursor over the post. Using this information we can manipulate it.
+        console.log(e, e.type)
+        if (data) {
+            console.log('Here is data: '+ data)
+        }
+    },
+    handleMousemove(e) {
+
+        getElementById(post).mousemove(function(e) {
+            postWidth = $(post).width();
+            postHeight = $(post).height();
+            
+            mouseXpercentage = Math.round(e.pageX / postWidth * 100);
+            mouseYpercentage = Math.round(e.pageY / postHeight * 100);
+            
+            getElementById('#radial-gradient').css('background', 'radial-gradient(at ' + mouseXpercentage + '% ' + mouseYpercentage + '%, #3498db, #9b59b6)');
+            // This needs to be converted back to vinilla javascript
+          });
+
+        this.x = e.offsetX
+        this.y = e.offsetY
+
+
+    }
+}
+
+computed: {}
+    filteredInfo() {
+    return this.info.filter((info) => info.isFav)
+}
+});
+
+
+vuePage.mount('#vue')
+
+// password: 2Qu@5#3R$$
+
+//-------------------------------------------------------------
+/*
 const vuePage = Vue.createApp({
     // Adding template
     template: '<h2>I am the template</h2>'
@@ -8,14 +72,13 @@ const vuePage = Vue.createApp({
 
     // here can be methods
 
-    data(){
-        return{
+data() {
+        return {
             showInfo: true,
-            x:0, 
-            y:0,
+            x: 0,
+            y: 0,
         }
     }
-[]
 methods: {
     toggleShowInfo() {
         this.showInfo = !this.showInfo
@@ -47,8 +110,8 @@ methods: {
 
 computed: {}
     filteredInfo() {
-        return this.info.filter((info) => info.isFav)
-    }
+    return this.info.filter((info) => info.isFav)
+}
 });
 
 
