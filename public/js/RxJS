@@ -1,0 +1,20 @@
+console.log(' clicks is working');
+// eslint-disable-next-line no-unused-vars
+const button = document.getElementsByClassName('.Card');
+
+// eslint-disable-next-line no-undef
+const Observable = Rx.Observable.frontEvent(document, 'click');
+
+const clicks = Observable.do((_) => {
+  // eslint-disable-next-line no-restricted-globals
+  print(`Looking at the last item you looked at  `);
+  console.log(' clicks is working');
+});
+
+// eslint-disable-next-line no-undef
+const subject = clicks.multicast(() => new Rx.Subject());
+
+// eslint-disable-next-line no-restricted-globals, no-unused-vars
+const user = subject.subscribe((c) => print(`Last looked at ${c.timeStamp}`));
+
+subject.connect();
