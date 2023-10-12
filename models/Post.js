@@ -61,6 +61,13 @@ Post.init(
         default: Date.NOW,
       },
     },
+    user_id: {
+      type: DataTypes.INTEGER,
+      references: {
+        model: 'user',
+        key: 'id',
+      },
+    },
   },
   {
     sequelize,
@@ -69,5 +76,4 @@ Post.init(
     modelName: 'post',
   }
 );
-
 module.exports = Post;

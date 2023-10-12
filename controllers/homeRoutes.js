@@ -1,8 +1,8 @@
 const router = require('express').Router();
 const axios = require('axios');
+const axios = require('axios');
 const { Subject, Post } = require('../models');
 const withAuth = require('../utils/auth');
-
 const siteName = 'DealDive';
 // Text for nav bar will match up to links
 const navItems = [
@@ -135,44 +135,22 @@ router.get('/signup', (req, res) => {
 });
 
 router.get('/dashboard', withAuth, async (req, res) => {
-  // uses withAuth function from Auth to verify login
-  if (req.session.logged_in) {
-    try {
-      const allSubjects = await Subject.findAll({
-        include: [
-          {
-            model: Post,
-            attributes: [
-              'date',
-              'price',
-              'title',
-              'location',
-              'contact',
-              'image',
-              'subject_id',
-            ],
+  try {
+      const postData = await Post.findAll({
+          where: {
+              user_id: req.session.user_id,
           },
-        ],
+         
       });
 
-      // List of all subjects. Each subject needing Post data
-      const subjects = allSubjects.map((r) => r.get({ plain: true }));
-      const postData = await Post.findAll();
-      const usersposts = postData.map((r) => r.get({ plain: true }));
+      const posts = postData.map((post) => post.get({ plain: true }));
+
       res.render('dashboard', {
-        subjects,
-        usersposts,
-        loggedIn: req.session.loggedIn,
-        siteName,
-        navItems,
+          posts,
+          logged_in: true,
       });
-    } catch (err) {
-      console.log(err);
+  } catch (err) {
       res.status(500).json(err);
-    }
-  } else {
-    console.log('Please login or sign up');
-    res.redirect('/login');
   }
 });
 
@@ -241,6 +219,7 @@ router.get('/post/:id', async (req, res) => {
         ...post,
         subject_id: subjectName,
       },
+      logged_in: req.session.logged_in,
     });
   } catch (err) {
     console.log(err);
@@ -259,7 +238,7 @@ router.post('/sellitem', async (req, res) => {
   }
 });
 
-router.get('/sellItem', withAuth, async (req, res) => {
+router.get('/sellItem', withAuth, async(req, res) => {
   if (req.session.logged_in) {
     const allSubjects = await Subject.findAll({
       include: [
@@ -280,8 +259,7 @@ router.get('/sellItem', withAuth, async (req, res) => {
 
     const subjectResults = allSubjects.map((r) => r.get({ plain: true }));
     res.render('sellItem', {
-      loggedIn: req.session.loggedIn,
-      siteName,
+      logged_in: req.session.logged_in,
       navItems,
       categories: subjectResults.map((item) => ({
         id: item.id,

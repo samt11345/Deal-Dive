@@ -11,6 +11,7 @@ const postData = [
     image: 'http://via.placeholder.com/150',
     similarItem: 'Vintage Chair',
     subject_id: 1,
+    user_id: 1,
   },
   {
     date: '2023-09-11',
@@ -22,6 +23,7 @@ const postData = [
     image: 'http://via.placeholder.com/150',
     similarItem: 'Modern Table',
     subject_id: 1,
+    user_id: 2,
   },
   {
     date: '2023-09-12',
@@ -33,6 +35,7 @@ const postData = [
     image: 'http://via.placeholder.com/150',
     similarItem: 'Antique Table',
     subject_id: 2,
+    user_id: 3,
   },
   {
     date: '2023-09-13',
@@ -44,6 +47,7 @@ const postData = [
     image: 'http://via.placeholder.com/150',
     similarItem: 'Contemporary Chair',
     subject_id: 2,
+    user_id: 1,
   },
   {
     date: '2023-09-14',
@@ -55,6 +59,7 @@ const postData = [
     image: 'http://via.placeholder.com/150',
     similarItem: 'Retro Sofa',
     subject_id: 3,
+    user_id: 2,
   },
   {
     date: '2023-09-15',
@@ -66,6 +71,7 @@ const postData = [
     image: 'http://via.placeholder.com/150',
     similarItem: 'Classic Desk',
     subject_id: 3,
+    user_id: 3,
   },
   {
     date: '2023-09-16',
@@ -77,6 +83,7 @@ const postData = [
     image: 'http://via.placeholder.com/150',
     similarItem: 'Industrial Chair',
     subject_id: 1,
+    user_id: 2,
   },
   {
     date: '2023-09-17',
@@ -88,6 +95,7 @@ const postData = [
     image: 'http://via.placeholder.com/150',
     similarItem: 'Minimalist Bed',
     subject_id: 1,
+    user_id: 3,
   },
   {
     date: '2023-09-18',
@@ -99,6 +107,7 @@ const postData = [
     image: 'http://via.placeholder.com/150',
     similarItem: 'Rustic Dresser',
     subject_id: 2,
+    user_id: 1,
   },
   {
     date: '2023-09-19',
@@ -110,6 +119,7 @@ const postData = [
     image: 'http://via.placeholder.com/150',
     similarItem: 'Mid-Century Modern Sofa',
     subject_id: 2,
+    user_id: 2,
   },
 ];
 
