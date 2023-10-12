@@ -30,9 +30,6 @@ const createPostFormHandler = async (event) => {
       });
 
       if (response.ok) {
-        debug('------------This response is okay------------', response);
-        debug(payload);
-
         localStorage.setItem('data', JSON.stringify(payload));
         document.location.replace('/');
       } else {

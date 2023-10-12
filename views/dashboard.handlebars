@@ -1,4 +1,13 @@
 <section class="card">
+    {{#each posts as |post|}}
+    <div v-for="info in filteredInfo" @mouseover="handleEvent" @mouseover="handleEvent"@mouseleave="handleEvent" @mousemove="handleMousemove">
+        position - {{ x }} {{ y }}
+        {{> post-details}}
+        <p> {{ info.title }}</p>
+        <p> {{ info.category }}</p>
+    </div>
+    {{/each}}
+</section>
 
   <div class="main-content">
         <h2>Your Posts</h2>
@@ -9,6 +18,11 @@
                     <img src="{{#if this.image}} {{this.image}} {{else}} http://via.placeholder.com/150 {{/if}}"
                         class="card-img-top" alt="..." width="200px" height="250px" />
 
+<script src="vue.js"></script>
+
+<h3> If you want to logout</h3>
+<p> Use the logout link if you want a different account</p>
+<a href="/logout">Go to logout</a>
                     <div class="card-body">
                         <h5 class="card-title">{{truncate this.title 60}}</h5>
                         <p class="card-text">Price: ${{this.price}}</p>
