@@ -8,10 +8,13 @@ const Observable = Rx.Observable.frontEvent(document, 'click');
 const clicks = Observable.do((_) => {
   // eslint-disable-next-line no-restricted-globals
   print(`Looking at the last item you looked at  `);
-  console.log(' clicks is working');
+  // eslint-disable-next-line prettier/prettier
+    console.log(' clicks is working');
 
-  localStorage.setItem('itemLastLooked', );
+  localStorage.setItem('itemLastLooked', 'New Item');
 
+  // credit to https://www.youtube.com/watch?v=2LCo926NFLI&ab_channel=Fireship
+  // check 14:00
 });
 
 // eslint-disable-next-line no-undef
