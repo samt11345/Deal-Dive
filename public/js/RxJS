@@ -9,6 +9,9 @@ const clicks = Observable.do((_) => {
   // eslint-disable-next-line no-restricted-globals
   print(`Looking at the last item you looked at  `);
   console.log(' clicks is working');
+
+  localStorage.setItem('itemLastLooked', );
+
 });
 
 // eslint-disable-next-line no-undef
