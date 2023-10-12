@@ -27,7 +27,7 @@ User.init(
       allowNull: false,
       // prevents duplicate email addresses in database
       unique: true,
-      // checks for email format 
+      // checks for email format
       validate: {
         isEmail: true,
       },
@@ -49,7 +49,7 @@ User.init(
         return newUserData;
       },
     },
-    // Link to database connection 
+    // Link to database connection
     sequelize,
     // Set to false to remove 'created_at' and 'updated_at' fields
     timestamps: false,
@@ -59,5 +59,4 @@ User.init(
     modelName: 'user',
   }
 );
-
 module.exports = User;

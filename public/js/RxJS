@@ -1,0 +1,32 @@
+console.log(' clicks is working');
+
+// eslint made comments like this
+
+// eslint-disable-next-line no-undef
+const Observable = Rx.Observable.frontEvent(document, 'click');
+
+// anywhere clicked on the doc can activivate Observable. this will need to be changed
+
+const clicks = Observable.do((_) => {
+  // eslint-disable-next-line no-restricted-globals
+  print(`Looking at the last item you looked at  `);
+  // eslint-disable-next-line prettier/prettier
+    console.log(' clicks is working');
+
+  // Use local storage to solve this
+
+  localStorage.setItem('itemLastLooked', 'New Item');
+
+  // credit to https://www.youtube.com/watch?v=2LCo926NFLI&ab_channel=Fireship
+  // check 14:00
+});
+
+// Takes multiple different values (subs) and put them out at once
+// eslint-disable-next-line no-undef
+const subject = clicks.multicast(() => new Rx.Subject());
+
+// This is for timstamps but can be the value for setItem
+// eslint-disable-next-line no-restricted-globals, no-unused-vars
+const user = subject.subscribe((c) => print(`Last looked at ${c.timeStamp}`));
+
+subject.connect();
