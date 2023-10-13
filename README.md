@@ -16,7 +16,7 @@ Table of Contents
 
 # Usage
 
-Video demo: https://drive.google.com/file/d/1jAnotGVpXPoMqxOU8duArYEab52SiWa7/view
+Video demo: https://drive.google.com/file/d/1eqIqoqotBQDkEAQlJp2pWoWZYq9tRb93/view
 
 Users must first source schema, seeds, and query sql files and fill out a sign up segment then click the index.js
 
