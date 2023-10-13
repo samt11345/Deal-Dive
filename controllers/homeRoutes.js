@@ -1,6 +1,5 @@
 const router = require('express').Router();
 const axios = require('axios');
-const axios = require('axios');
 const { Subject, Post } = require('../models');
 const withAuth = require('../utils/auth');
 const siteName = 'DealDive';
