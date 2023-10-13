@@ -28,6 +28,11 @@ From there the users can select create a listing and fill out a form. To add an 
 
 @lcurtis0 @SediaM @samt11345 @kojootchere @Devin-Butler
 
+Credit to Fireship for explaining RxJS and Mulitcast : https://www.youtube.com/watch?v=2LCo926NFLI&ab_channel=Fireship
+Check 14:00 
+
+Credit to RxJS documentation for explaining RxJS Observables : https://rxjs.dev/guide/overview
+
 # License
 
 '![License: Unlicense](https://img.shields.io/badge/license-Unlicense-blue.svg)'
