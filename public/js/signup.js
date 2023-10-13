@@ -8,10 +8,7 @@ const signupFormHandler = async (event) => {
   if (password.length < 8) {
     alert('Password must be more then 8 characters.');
   } else if (email && password && username) {
-<<<<<<< HEAD
-=======
     // Converts the entered info to text for routes
->>>>>>> 79542344e930620fe74d70639ae8d454b171ea33
     const response = await fetch('/api/users/signup', {
       method: 'POST',
       body: JSON.stringify({

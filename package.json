@@ -1,9 +1,7 @@
 {
   "name": "project-2",
   "version": "1.0.0",
-  "engines": {
-    "node": "12.11.1"
-  },
+  
   "description": "DealDive",
   "main": "server.js",
   "scripts": {
@@ -11,9 +9,8 @@
     "start": "node server.js",
     "seed": "node seeds/index.js",
     "lint": "eslint .",
-    "lint:fix": "eslint . --fix",
-    "serve": "./node_modules/\\@vue/cli-service/bin/vue-cli-service.js serve --open",
-    "build": "./node_modules/\\@vue/cli-service/bin/vue-cli-service.js build"
+    "lint:fix": "eslint . --fix"
+   
   },
   "keywords": [],
   "author": "",
