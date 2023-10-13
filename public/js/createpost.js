@@ -28,10 +28,14 @@ const createPostFormHandler = async (event) => {
         body: JSON.stringify(payload),
         headers: { 'Content-Type': 'application/json' },
       });
-
+const results = await response.json()
+console.log(results)
       if (response.ok) {
+        console.log('Post created successfully!');
+        alert('Post created successfully!');
+
         localStorage.setItem('data', JSON.stringify(payload));
-        document.location.replace('/');
+        // document.location.replace('/');
       } else {
         alert('Could not make a post: Need to fill out all required fields');
       }

@@ -62,7 +62,7 @@ router.get('/', async (req, res) => {
       siteName,
       navItems,
       categories: subjectResults.map(item => ({ id: item.id, name: item.subject_name })),
-      featuredItems: allPostResults
+      featuredItems: allPostResults,
     });
   } catch (err) {
     console.log(err);

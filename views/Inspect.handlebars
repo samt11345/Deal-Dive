@@ -12,6 +12,10 @@
             <p>Description: {{product.description}}</p>
             <p>Seller's Social Media: <a href="{{product.contact}}">Click to view Contact Information</a></p>
             <a href="{{product.similarItem}}" target="_blank" class="btn btn-primary">Compare Prices on Amazon</a>
+                <button data-id="{{product.id}}" id="deleteBtn" class="btn btn-primary">delete</button>
         </div>
     </div>
 </main>
+
+<script src="/js/deletepost.js"></script>
+
