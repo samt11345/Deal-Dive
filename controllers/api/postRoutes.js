@@ -27,15 +27,19 @@ router.get('/:id', (req, res) => {
 
 // POST a new item
 router.post('/', (req, res) => {
-  const newPost = req.body;
+  const newPost = {
+      ...req.body,
+      user_id: req.session.user_id
+  };
   Post.create(newPost)
-    .then((results) => {
-      res.status(201).json(results);
-    })
-    .catch((err) => {
-      console.log(err);
-      res.json(err);
-    });
+      .then((results) => {
+          res.redirect('/dashboard');
+          // res.status(201).json(results);
+      })
+      .catch((err) => {
+          console.log(err);
+          res.json(err);
+      });
 });
 
 // PUT (update) an existing item by ID

@@ -1,15 +1,41 @@
 <section class="card">
     {{#each posts as |post|}}
-    {{> post-details}}
+    <div v-for="info in filteredInfo" @mouseover="handleEvent" @mouseover="handleEvent"@mouseleave="handleEvent" @mousemove="handleMousemove">
+        position - {{ x }} {{ y }}
+        {{> post-details}}
+        <p> {{ info.title }}</p>
+        <p> {{ info.category }}</p>
+    </div>
     {{/each}}
 </section>
 
-<section class="card">
-    {{#if isUserLoggedIn}}
-    {{> createpost-details}}
-    {{/if}}
-</section>
+  <div class="main-content">
+        <h2>Your Posts</h2>
+        <div class="row">
+            {{#each posts}}
+            <div class="col-sm-4" style="padding-bottom: 20px;">
+                <div class="card shadow-lg" style="min-height: 450px; max-height: 450px;">
+                    <img src="{{#if this.image}} {{this.image}} {{else}} http://via.placeholder.com/150 {{/if}}"
+                        class="card-img-top" alt="..." width="200px" height="250px" />
+
 
 <h3> If you want to logout</h3>
 <p> Use the logout link if you want a different account</p>
 <a href="/logout">Go to logout</a>
+                    <div class="card-body">
+                        <h5 class="card-title">{{truncate this.title 60}}</h5>
+                        <p class="card-text">Price: ${{this.price}}</p>
+                        <p class="card-text">Location: {{this.location}}</p>
+                    </div>
+                    <a href="/post/{{this.id}}" class="btn btn-primary">View Details</a>
+                </div>
+            </div>
+            {{else}}
+            <div style="display: flex; justify-content: center; align-items: center; height: 100vh; font-size: 2em;">
+                <p>No items added</p>
+            </div>
+            {{/each}}
+        </div>
+    </div>
+
+</section>
