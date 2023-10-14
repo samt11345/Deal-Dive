@@ -16,7 +16,7 @@ Table of Contents
 
 # Usage
 
-Video demo: https://drive.google.com/file/d/1eqIqoqotBQDkEAQlJp2pWoWZYq9tRb93/view
+Video demo: (https://drive.google.com/file/d/1Lw7hVGXrJzksF6ou2Bc_r4Wg8cv3-mL-/view)
 
 Users must first source schema, seeds, and query sql files and fill out a sign up segment then click the index.js
 
@@ -26,7 +26,7 @@ From there the users can select create a listing and fill out a form. To add an 
 
 # Credits
 
-@lcurtis0 @SediaM @samt11345 @kojootchere @Devin-Butler
+@lcurtis0 @SediaM @samt11345 @kojootchere
 
 Credit to Fireship for explaining RxJS and Mulitcast : https://www.youtube.com/watch?v=2LCo926NFLI&ab_channel=Fireship
 Check 14:00 
@@ -35,16 +35,9 @@ Credit to RxJS documentation for explaining RxJS Observables : https://rxjs.dev/
 
 # License
 
-'![License: Unlicense](https://img.shields.io/badge/license-Unlicense-blue.svg)'
+'![License: ISC](https://img.shields.io/badge/license-ISC-blue.svg)'
 
 # Deployment
 Evaluated environment url: https://samt11345.github.io/Project2/
+Deployed application on Heroku: (https://deal-dive-dcc6c738ad30.herokuapp.com/)
 
-Badges
-N/A
-
-How to Contribute
-N/A
-
-Tests
-N/A
