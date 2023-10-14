@@ -16,7 +16,7 @@ Table of Contents
 
 # Usage
 
-Video demo: (https://drive.google.com/file/d/1Lw7hVGXrJzksF6ou2Bc_r4Wg8cv3-mL-/view)
+Video demo: https://drive.google.com/file/d/1Lw7hVGXrJzksF6ou2Bc_r4Wg8cv3-mL-/view
 
 Users must first source schema, seeds, and query sql files and fill out a sign up segment then click the index.js
 
@@ -35,9 +35,10 @@ Credit to RxJS documentation for explaining RxJS Observables : https://rxjs.dev/
 
 # License
 
-'![License: ISC](https://img.shields.io/badge/license-ISC-blue.svg)'
+![License: ISC](https://img.shields.io/badge/license-ISC-blue.svg)
 
 # Deployment
 Evaluated environment url: https://samt11345.github.io/Project2/
-Deployed application on Heroku: (https://deal-dive-dcc6c738ad30.herokuapp.com/)
+
+Deployed application on Heroku: https://deal-dive-dcc6c738ad30.herokuapp.com/
 
