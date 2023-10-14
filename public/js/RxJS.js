@@ -2,7 +2,6 @@ const { map } = rxjs;
 
 const clickObservable = rxjs.fromEvent(document, 'click');
 
-
 // clickObservable
 //   .pipe(
 //     map((pointerEvent) => console.log(pointerEvent.parentElement)),

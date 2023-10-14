@@ -10,6 +10,9 @@ const SubjectData = [
   {
     subject_name: 'shoes',
   },
+  {
+    subject_name: 'accessories',
+  },
 ];
 
 const seedSubject = () => Subject.bulkCreate(SubjectData);
